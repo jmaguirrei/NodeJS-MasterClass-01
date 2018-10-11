@@ -14,9 +14,8 @@ module.exports = function createServer(req, res) {
   const path = parsedUrl.pathname;
   const trimmedPath = path.replace(/^\/+|\/+$/g, ''); // removes extra slashes...
 
-  req.on('data', data => {
-    console.log('data --> ', data);
-  });
+  // WITHOUT THIS LINE EXAMPLE DOES NOT WORK, WHY ??
+  req.on('data', console.log);
 
   req.on('end', () => {
 
