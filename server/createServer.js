@@ -1,22 +1,11 @@
 
 
 // Dependencies
-const http = require('http');
 const url = require('url');
-
-// Define a router
-const router = {
-  hello(data, callback) {
-    // callback http status code and payload object
-    callback(200);
-  },
-  notFound(data, callback) {
-    callback(404);
-  },
-};
+const router = require('./router');
 
 // createServer
-function createServer(req, res) {
+module.exports = function createServer(req, res) {
 
   // parse url (returns an object)
   const parsedUrl = url.parse(req.url, true); // true: use query string module
@@ -48,11 +37,4 @@ function createServer(req, res) {
 
   });
 
-}
-
-const server = http.createServer(createServer);
-
-// Start the server and listen
-server.listen(3030, () => {
-  console.log('Listening on port 3030');
-});
+};
